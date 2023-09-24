@@ -9,13 +9,13 @@ $(function () {
   function initializePage() {
     setTodaysDate();
 
-    $.each(timeBlockEl, function (i, timeBlock) {
-      if (parseInt(timeBlock.attributes[0].value) === today.$H) {
-        timeBlock.classList.add("present");
-      } else if (parseInt(timeBlock.attributes[0].value) < today.$H) {
-        timeBlock.classList.add("past");
+    $.each(timeBlockEl, function (i) {
+      if (parseInt(this.attributes[0].value) === today.$H) {
+        this.classList.add("present");
+      } else if (parseInt(this.attributes[0].value) < today.$H) {
+        this.classList.add("past");
       } else {
-        timeBlock.classList.add("future");
+        this.classList.add("future");
       }
     });
 
