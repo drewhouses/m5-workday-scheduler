@@ -4,18 +4,20 @@
 $(function () {
   var buttonEl = $(".saveBtn");
   var today = dayjs();
+  var hour = today.hour();
   var timeBlockEl = $(".time-block");
 
   function initializePage() {
     setTodaysDate();
 
-    $.each(timeBlockEl, function (i) {
-      if (parseInt(this.attributes[0].value) === today.$H) {
-        this.classList.add("present");
-      } else if (parseInt(this.attributes[0].value) < today.$H) {
-        this.classList.add("past");
+    timeBlockEl.each(function (i) {
+      var idToInt = parseInt(this.id);
+      if (idToInt == hour) {
+        $(this).addClass("present");
+      } else if (idToInt < hour) {
+        $(this).addClass("past");
       } else {
-        this.classList.add("future");
+        $(this).addClass("future");
       }
     });
 
@@ -37,6 +39,7 @@ $(function () {
   initializePage();
   buttonEl.on("click", function (event) {
     event.preventDefault();
+    console.log(event);
 
     var localItem = $(this).parent().attr("id");
     var item = $(this).siblings("textarea").val();
