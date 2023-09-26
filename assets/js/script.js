@@ -36,6 +36,7 @@ $(function () {
 
     $("#currentDay").text(formattedDate);
   }
+
   initializePage();
   buttonEl.on("click", function (event) {
     event.preventDefault();
